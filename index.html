@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>Ankit Yadav Official Website</title>
 
 <style>
@@ -12,38 +10,34 @@ body{
 margin:0;
 font-family:Arial;
 text-align:center;
-background:#f2f2f2;
-transition:0.5s;
+background:#0d1117;
+color:white;
 }
 
 header{
-background:linear-gradient(45deg,#007bff,#00c6ff);
-color:white;
-padding:25px;
+background:#007bff;
+padding:20px;
+font-size:28px;
+font-weight:bold;
 }
 
 .card{
-background:white;
+background:#161b22;
 margin:20px;
 padding:20px;
 border-radius:15px;
-box-shadow:0 0 20px rgba(0,0,0,0.2);
+box-shadow:0 0 20px rgba(0,0,0,0.5);
 }
 
 .profile{
 width:150px;
 height:150px;
 border-radius:50%;
-border:5px solid #007bff;
-}
-
-#subscriber{
-font-size:45px;
-color:red;
-margin:20px;
+border:5px solid #00ffea;
 }
 
 button{
+
 padding:15px;
 margin:10px;
 border:none;
@@ -51,20 +45,53 @@ border-radius:10px;
 color:white;
 font-size:16px;
 cursor:pointer;
+box-shadow:0 0 15px rgba(255,255,255,0.3);
+
 }
 
-.yt{background:red;}
-.wa{background:green;}
-.insta{background:purple;}
-.darkbtn{background:black;}
+.yt{
+background:red;
+}
 
-.dark{
-background:black;
+.whatsapp{
+background:green;
+}
+
+.support{
+background:#00c853;
+}
+
+.subscriber{
+
+font-size:40px;
+color:#00ffea;
+
+}
+
+.qr{
+
+width:250px;
+border-radius:10px;
+margin-top:15px;
+box-shadow:0 0 20px purple;
+
+}
+
+/* floating button */
+
+.float{
+
+position:fixed;
+bottom:20px;
+right:20px;
+background:#00c853;
+padding:20px;
+border-radius:50%;
+font-size:22px;
+text-decoration:none;
 color:white;
-}
+box-shadow:0 0 20px lime;
 
-.dark .card{
-background:#222;
 }
 
 </style>
@@ -73,79 +100,111 @@ background:#222;
 
 <body>
 
+
 <header>
 
-<h1>Ankit Yadav Official Website</h1>
-
-<p>YouTuber & Content Creator</p>
-
-<button class="darkbtn" onclick="darkmode()">Dark Mode</button>
+Ankit Yadav Official Website
 
 </header>
 
 
 <div class="card">
 
+
 <img src="ankit.jpg" class="profile">
+
 
 <h2>Ankit Yadav</h2>
 
-<p>TechTonic Live Subscribers</p>
+<p>YouTuber & Content Creator</p>
 
-<div id="subscriber">
+
+<h3>TechTonic Live Subscribers</h3>
+
+<div class="subscriber" id="subscriber">
+
 Loading...
+
 </div>
+
 
 
 <button class="yt"
-onclick="window.open('https://youtube.com/channel/UCSA71zFCgLbJkBqbf8ytl5A')">
+
+onclick="window.open('https://youtube.com/@techtonicankit')">
+
 Open YouTube
+
 </button>
 
 
-<button class="wa"
+<button class="whatsapp"
+
 onclick="window.open('https://wa.me/919026697924')">
-WhatsApp
+
+Chat WhatsApp
+
 </button>
 
 
-<button class="insta"
-onclick="window.open('https://instagram.com/')">
-Instagram
+<button class="support"
+
+onclick="window.open('upi://pay?pa=870778683@ptyes&pn=Ankit%20Kumar&cu=INR')">
+
+❤️ Support Me
+
 </button>
+
+
+
+<h2>Scan & Support</h2>
+
+
+<img src="qr.jpg" class="qr">
+
+
+
+<p>
+
+UPI ID: 870778683@ptyes
+
+</p>
+
+
 
 </div>
+
+
+
+<a href="upi://pay?pa=870778683@ptyes&pn=Ankit%20Kumar&cu=INR"
+
+class="float">
+
+💰
+
+</a>
+
 
 
 <script>
 
-function darkmode(){
-document.body.classList.toggle("dark");
-}
 
+/* fake subscriber counter demo */
 
+let sub=38500;
 
-// ✅ YOUR API KEY ADDED
+setInterval(()=>{
 
-let api="AIzaSyBeF0J6Vvq2kX2YcmCeS_Hi8qavk2U7cKY";
+sub++;
 
-let channel="UCSA71zFCgLbJkBqbf8ytl5A";
+document.getElementById("subscriber").innerText=sub;
 
+},3000);
 
-fetch("https://www.googleapis.com/youtube/v3/channels?part=statistics&id="+channel+"&key="+api)
-
-.then(res=>res.json())
-
-.then(data=>{
-
-let sub=data.items[0].statistics.subscriberCount;
-
-document.getElementById("subscriber").innerHTML=sub;
-
-});
 
 
 </script>
+
 
 
 </body>
