@@ -1,16 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Ankit Yadav Official Website</title>
+
+<meta name="description" content="Ankit Yadav Official Website, YouTuber, Live Subscriber Counter, Support and Contact">
+
+<meta name="keywords" content="Ankit Yadav, TechTonic Ankit, YouTube, Subscriber Counter">
+
+<meta name="author" content="Ankit Yadav">
+
+<meta name="google-site-verification" content="7f1XgAlNpcdUvZJl3kbqG1Vg1J8W2GX4sXlpyweCOa4" />
 
 <style>
 
 body{
 font-family:Arial;
-text-align:center;
-background:#f2f2f2;
 margin:0;
+background:#f2f2f2;
+text-align:center;
 }
 
 header{
@@ -20,24 +31,30 @@ padding:20px;
 }
 
 .card{
+
 background:white;
-margin:20px;
 padding:20px;
+margin:20px;
 border-radius:15px;
 box-shadow:0 0 10px rgba(0,0,0,0.2);
+
 }
 
 .profile{
+
 width:150px;
 height:150px;
 border-radius:50%;
-border:5px solid #007bff;
+border:5px solid blue;
+
 }
 
 #subscriber{
+
 font-size:40px;
 color:red;
-margin:15px;
+margin:20px;
+
 }
 
 button{
@@ -48,34 +65,19 @@ border:none;
 border-radius:10px;
 color:white;
 font-size:16px;
-cursor:pointer;
 
 }
 
 .yt{background:red;}
 .wa{background:green;}
 .support{background:purple;}
-.upi{background:#ff9800;}
+.upi{background:orange;}
 
-#popup{
+footer{
 
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.7);
-
-}
-
-.popup-content{
-
-background:white;
-margin:10% auto;
-padding:20px;
-width:300px;
-border-radius:15px;
+background:black;
+color:white;
+padding:15px;
 
 }
 
@@ -85,33 +87,27 @@ border-radius:15px;
 
 <body>
 
-
 <header>
 
 <h1>Ankit Yadav Official Website</h1>
-<p>Welcome to my website</p>
+<p>Welcome to my official website</p>
 
 </header>
 
-
-
 <div class="card">
 
-<img src="profile.jpg" class="profile">
+<img src="phonepe_qr_ankit.jpg" class="profile">
 
 <h2>Ankit Yadav</h2>
 
 <p>YouTuber & Content Creator</p>
 
-
-<h2>Live Subscribers</h2>
+<h3>Live Subscribers</h3>
 
 <div id="subscriber">Loading...</div>
 
 
-
 <button class="yt"
-
 onclick="window.open('https://youtube.com/@techtonicankit')">
 
 Open YouTube
@@ -119,76 +115,58 @@ Open YouTube
 </button>
 
 
-
 <button class="wa"
+onclick="window.open('https://wa.me/919026697924')">
 
-onclick="window.open('https://wa.me/91870778683')">
-
-WhatsApp
+WhatsApp Chat
 
 </button>
-
 
 
 <button class="support"
+onclick="document.getElementById('pay').style.display='block'">
 
-onclick="openPopup()">
-
-Support Me ❤️
+Support Me
 
 </button>
 
 
-
 <button class="upi"
-
-onclick="payUPI()">
+onclick="window.open('upi://pay?pa=870778683@ptyes&pn=Ankit Kumar')">
 
 Pay via UPI
 
 </button>
 
 
-
-</div>
-
-
-
-<div id="popup">
-
-<div class="popup-content">
+<div id="pay" style="display:none">
 
 <h3>Scan & Support</h3>
 
-<img src="phonepe_qr_ankit.jpg" width="200">
+<img src="phonepe_qr_ankit.jpg" width="250">
 
-<br><br>
-
-<button onclick="closePopup()">Close</button>
-
-</div>
+<p>UPI ID: 870778683@ptyes</p>
 
 </div>
 
 
+</div>
+
+
+<footer>
+
+© 2026 Ankit Yadav Official Website
+
+</footer>
 
 
 <script>
 
+const API_KEY="AIzaSyBeF0J6Vvq2kX2YcmCeS_Hi8qavk2U7cKY";
 
+const CHANNEL_ID="UCSA71zFCgLbJkBqbf8ytl5A";
 
-// YouTube API
-
-let api="YOUR_API_KEY";
-
-let channel="UCSA71zFCgLbJkBqbf8ytl5A";
-
-
-fetch(
-
-"https://www.googleapis.com/youtube/v3/channels?part=statistics&id="+channel+"&key="+api
-
-)
+fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`)
 
 .then(res=>res.json())
 
@@ -200,40 +178,7 @@ data.items[0].statistics.subscriberCount;
 
 });
 
-
-
-
-// popup
-
-function openPopup(){
-
-document.getElementById("popup").style.display="block";
-
-}
-
-
-
-function closePopup(){
-
-document.getElementById("popup").style.display="none";
-
-}
-
-
-
-
-// upi pay
-
-function payUPI(){
-
-window.location.href="upi://pay?pa=870778683@ptyes&pn=Ankit&cu=INR";
-
-}
-
-
-
 </script>
-
 
 
 </body>
