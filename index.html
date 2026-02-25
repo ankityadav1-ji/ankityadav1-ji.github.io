@@ -1,83 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ankit Yadav Official Website</title>
-
-<meta name="description" content="Ankit Yadav Official Website, YouTuber, Live Subscriber Counter, Support and Contact">
-
-<meta name="keywords" content="Ankit Yadav, TechTonic Ankit, YouTube, Subscriber Counter">
-
-<meta name="author" content="Ankit Yadav">
-
 <meta name="google-site-verification" content="7f1XgAlNpcdUvZJl3kbqG1Vg1J8W2GX4sXlpyweCOa4" />
+
+<title>Ankit Yadav | Hacker</title>
 
 <style>
 
 body{
-font-family:Arial;
+
 margin:0;
-background:#f2f2f2;
+background:black;
+color:#00ff00;
+font-family:Courier New;
 text-align:center;
+
 }
 
-header{
-background:#007bff;
-color:white;
-padding:20px;
+canvas{
+
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+
 }
 
 .card{
 
-background:white;
+margin-top:50px;
+border:1px solid #00ff00;
 padding:20px;
-margin:20px;
-border-radius:15px;
-box-shadow:0 0 10px rgba(0,0,0,0.2);
+width:300px;
+margin-left:auto;
+margin-right:auto;
+box-shadow:0 0 20px #00ff00;
 
 }
 
-.profile{
+img{
 
-width:150px;
-height:150px;
+width:120px;
 border-radius:50%;
-border:5px solid blue;
-
-}
-
-#subscriber{
-
-font-size:40px;
-color:red;
-margin:20px;
+border:2px solid #00ff00;
 
 }
 
 button{
 
-padding:15px;
+background:black;
+color:#00ff00;
+border:1px solid #00ff00;
+padding:10px;
 margin:10px;
-border:none;
-border-radius:10px;
-color:white;
-font-size:16px;
+cursor:pointer;
 
 }
 
-.yt{background:red;}
-.wa{background:green;}
-.support{background:purple;}
-.upi{background:orange;}
+button:hover{
 
-footer{
+background:#00ff00;
+color:black;
 
-background:black;
-color:white;
-padding:15px;
+}
+
+#subs{
+
+font-size:35px;
 
 }
 
@@ -87,99 +79,99 @@ padding:15px;
 
 <body>
 
-<header>
-
-<h1>Ankit Yadav Official Website</h1>
-<p>Welcome to my official website</p>
-
-</header>
+<canvas id="matrix"></canvas>
 
 <div class="card">
 
-<img src="phonepe_qr_ankit.jpg" class="profile">
+<img src="profile.jpg">
 
-<h2>Ankit Yadav</h2>
+<h2>ANIKT_YADAV.exe</h2>
 
-<p>YouTuber & Content Creator</p>
+<p>System Access: GRANTED</p>
 
-<h3>Live Subscribers</h3>
+<p>Subscribers:</p>
 
-<div id="subscriber">Loading...</div>
+<div id="subs">38500</div>
 
+<button onclick="window.open('https://youtube.com')">
 
-<button class="yt"
-onclick="window.open('https://youtube.com/@techtonicankit')">
-
-Open YouTube
+OPEN YOUTUBE
 
 </button>
 
+<button onclick="window.open('https://wa.me/919026697924')">
 
-<button class="wa"
-onclick="window.open('https://wa.me/919026697924')">
-
-WhatsApp Chat
+WHATSAPP
 
 </button>
 
+<button onclick="payUPI()">
 
-<button class="support"
-onclick="document.getElementById('pay').style.display='block'">
-
-Support Me
+SUPPORT UPI
 
 </button>
-
-
-<button class="upi"
-onclick="window.open('upi://pay?pa=870778683@ptyes&pn=Ankit Kumar')">
-
-Pay via UPI
-
-</button>
-
-
-<div id="pay" style="display:none">
-
-<h3>Scan & Support</h3>
-
-<img src="phonepe_qr_ankit.jpg" width="250">
-
-<p>UPI ID: 870778683@ptyes</p>
 
 </div>
-
-
-</div>
-
-
-<footer>
-
-© 2026 Ankit Yadav Official Website
-
-</footer>
-
 
 <script>
 
-const API_KEY="AIzaSyBeF0J6Vvq2kX2YcmCeS_Hi8qavk2U7cKY";
+function payUPI(){
 
-const CHANNEL_ID="UCSA71zFCgLbJkBqbf8ytl5A";
+window.location.href="upi://pay?pa=870778683@ptyes";
 
-fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`)
+}
 
-.then(res=>res.json())
+// MATRIX EFFECT
 
-.then(data=>{
+var canvas=document.getElementById("matrix");
 
-document.getElementById("subscriber").innerText=
+var ctx=canvas.getContext("2d");
 
-data.items[0].statistics.subscriberCount;
+canvas.height=window.innerHeight;
 
-});
+canvas.width=window.innerWidth;
+
+var letters="HACKERANKITYADAV";
+
+letters=letters.split("");
+
+var fontSize=14;
+
+var columns=canvas.width/fontSize;
+
+var drops=[];
+
+for(var i=0;i<columns;i++)
+drops[i]=1;
+
+function draw(){
+
+ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="#0f0";
+
+ctx.font=fontSize+"px monospace";
+
+for(var i=0;i<drops.length;i++){
+
+var text=letters[Math.floor(Math.random()*letters.length)];
+
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+if(drops[i]*fontSize>canvas.height && Math.random()>0.975)
+
+drops[i]=0;
+
+drops[i]++;
+
+}
+
+}
+
+setInterval(draw,35);
 
 </script>
-
 
 </body>
 
