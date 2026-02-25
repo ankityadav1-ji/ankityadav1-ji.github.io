@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ankit Yadav Official Website</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+text-align:center;
+background:#f2f2f2;
+transition:0.3s;
+}
+
+header{
+background:#007bff;
+color:white;
+padding:20px;
+}
+
+.card{
+background:white;
+margin:20px;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+.profile{
+width:150px;
+height:150px;
+border-radius:50%;
+border:5px solid #007bff;
+object-fit:cover;
+}
+
+button{
+padding:15px;
+margin:10px;
+border:none;
+border-radius:10px;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+.yt{ background:red; }
+.wa{ background:green; }
+.apk{ background:orange; }
+.earn{ background:purple; }
+.darkbtn{ background:black; }
+
+#subscriber{
+color:red;
+font-size:40px;
+margin:15px;
+}
+
+.dark{
+background:black;
+color:white;
+}
+
+.dark .card{
+background:#222;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>Ankit Yadav Official Website</h1>
+<p>Welcome to my website</p>
+
+</header>
+
+<div class="card">
+
+<img src="ankit.jpg" class="profile">
+
+<h2>Ankit Yadav</h2>
+
+<p>YouTuber & Content Creator</p>
+
+<h2>TechTonic Live Subscribers</h2>
+
+<div id="subscriber">Loading...</div>
+
+<a href="https://youtube.com/@techtonicankit">
+<button class="yt">Open YouTube</button>
+</a>
+
+<br>
+
+<a href="https://wa.me/919026697924">
+<button class="wa">Chat WhatsApp</button>
+</a>
+
+<br>
+
+<button class="apk">Download APK</button>
+
+<br>
+
+<button class="earn">Online Earning</button>
+
+<br>
+
+<button onclick="darkMode()" class="darkbtn">
+Dark Mode
+</button>
+
+<br><br>
+
+<h2>Latest Video</h2>
+
+<iframe width="300" height="180"
+src="https://www.youtube.com/embed?listType=user_uploads&list=UCSA71zFCgLbJkBqbf8ytl5A">
+</iframe>
+
+</div>
+
+
+<script>
+
+// Dark mode
+
+function darkMode(){
+document.body.classList.toggle("dark");
+}
+
+
+// ✅ YOUR API KEY ADDED
+
+const apiKey="AIzaSyBeF0J6Vvq2kX2YcmCeS_Hi8qavk2U7cKY";
+
+const channelId="UCSA71zFCgLbJkBqbf8ytl5A";
+
+async function updateSubs(){
+
+let res=await fetch(
+`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`
+);
+
+let data=await res.json();
+
+let subs=data.items[0].statistics.subscriberCount;
+
+document.getElementById("subscriber").innerText=subs;
+
+}
+
+updateSubs();
+
+setInterval(updateSubs,5000);
+
+</script>
+
+</body>
+</html>
