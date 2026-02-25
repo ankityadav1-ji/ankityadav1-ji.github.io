@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>Ankit Yadav Official Website</title>
 
 <style>
@@ -11,21 +13,21 @@ margin:0;
 font-family:Arial;
 text-align:center;
 background:#f2f2f2;
-transition:0.3s;
+transition:0.5s;
 }
 
 header{
-background:#007bff;
+background:linear-gradient(45deg,#007bff,#00c6ff);
 color:white;
-padding:20px;
+padding:25px;
 }
 
 .card{
 background:white;
 margin:20px;
 padding:20px;
-border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,0.2);
+border-radius:15px;
+box-shadow:0 0 20px rgba(0,0,0,0.2);
 }
 
 .profile{
@@ -33,7 +35,12 @@ width:150px;
 height:150px;
 border-radius:50%;
 border:5px solid #007bff;
-object-fit:cover;
+}
+
+#subscriber{
+font-size:45px;
+color:red;
+margin:20px;
 }
 
 button{
@@ -46,17 +53,10 @@ font-size:16px;
 cursor:pointer;
 }
 
-.yt{ background:red; }
-.wa{ background:green; }
-.apk{ background:orange; }
-.earn{ background:purple; }
-.darkbtn{ background:black; }
-
-#subscriber{
-color:red;
-font-size:40px;
-margin:15px;
-}
+.yt{background:red;}
+.wa{background:green;}
+.insta{background:purple;}
+.darkbtn{background:black;}
 
 .dark{
 background:black;
@@ -68,6 +68,7 @@ background:#222;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -75,9 +76,13 @@ background:#222;
 <header>
 
 <h1>Ankit Yadav Official Website</h1>
-<p>Welcome to my website</p>
+
+<p>YouTuber & Content Creator</p>
+
+<button class="darkbtn" onclick="darkmode()">Dark Mode</button>
 
 </header>
+
 
 <div class="card">
 
@@ -85,81 +90,64 @@ background:#222;
 
 <h2>Ankit Yadav</h2>
 
-<p>YouTuber & Content Creator</p>
+<p>TechTonic Live Subscribers</p>
 
-<h2>TechTonic Live Subscribers</h2>
+<div id="subscriber">
+Loading...
+</div>
 
-<div id="subscriber">Loading...</div>
 
-<a href="https://youtube.com/@techtonicankit">
-<button class="yt">Open YouTube</button>
-</a>
-
-<br>
-
-<a href="https://wa.me/919026697924">
-<button class="wa">Chat WhatsApp</button>
-</a>
-
-<br>
-
-<button class="apk">Download APK</button>
-
-<br>
-
-<button class="earn">Online Earning</button>
-
-<br>
-
-<button onclick="darkMode()" class="darkbtn">
-Dark Mode
+<button class="yt"
+onclick="window.open('https://youtube.com/channel/UCSA71zFCgLbJkBqbf8ytl5A')">
+Open YouTube
 </button>
 
-<br><br>
 
-<h2>Latest Video</h2>
+<button class="wa"
+onclick="window.open('https://wa.me/919026697924')">
+WhatsApp
+</button>
 
-<iframe width="300" height="180"
-src="https://www.youtube.com/embed?listType=user_uploads&list=UCSA71zFCgLbJkBqbf8ytl5A">
-</iframe>
+
+<button class="insta"
+onclick="window.open('https://instagram.com/')">
+Instagram
+</button>
 
 </div>
 
 
 <script>
 
-// Dark mode
-
-function darkMode(){
+function darkmode(){
 document.body.classList.toggle("dark");
 }
 
 
+
 // ✅ YOUR API KEY ADDED
 
-const apiKey="AIzaSyBeF0J6Vvq2kX2YcmCeS_Hi8qavk2U7cKY";
+let api="AIzaSyBeF0J6Vvq2kX2YcmCeS_Hi8qavk2U7cKY";
 
-const channelId="UCSA71zFCgLbJkBqbf8ytl5A";
+let channel="UCSA71zFCgLbJkBqbf8ytl5A";
 
-async function updateSubs(){
 
-let res=await fetch(
-`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`
-);
+fetch("https://www.googleapis.com/youtube/v3/channels?part=statistics&id="+channel+"&key="+api)
 
-let data=await res.json();
+.then(res=>res.json())
 
-let subs=data.items[0].statistics.subscriberCount;
+.then(data=>{
 
-document.getElementById("subscriber").innerText=subs;
+let sub=data.items[0].statistics.subscriberCount;
 
-}
+document.getElementById("subscriber").innerHTML=sub;
 
-updateSubs();
+});
 
-setInterval(updateSubs,5000);
 
 </script>
 
+
 </body>
+
 </html>
