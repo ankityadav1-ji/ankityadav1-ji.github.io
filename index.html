@@ -2,177 +2,179 @@
 <html>
 <head>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ankit Yadav Official Website</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <meta name="google-site-verification" content="7f1XgAlNpcdUvZJl3kbqG1Vg1J8W2GX4sXlpyweCOa4" />
-
-<title>Ankit Yadav | Hacker</title>
 
 <style>
 
 body{
 
 margin:0;
-background:black;
-color:#00ff00;
-font-family:Courier New;
+font-family:Arial;
+background:#f2f2f2;
 text-align:center;
 
 }
 
-canvas{
+header{
 
-position:fixed;
-top:0;
-left:0;
-z-index:-1;
+background:#007bff;
+color:white;
+padding:20px;
 
 }
 
 .card{
 
-margin-top:50px;
-border:1px solid #00ff00;
+background:white;
+margin:20px;
 padding:20px;
-width:300px;
-margin-left:auto;
-margin-right:auto;
-box-shadow:0 0 20px #00ff00;
+border-radius:15px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
 
 }
 
-img{
+.profile{
 
-width:120px;
+width:150px;
+height:150px;
 border-radius:50%;
-border:2px solid #00ff00;
+border:5px solid #007bff;
 
 }
 
 button{
 
-background:black;
-color:#00ff00;
-border:1px solid #00ff00;
-padding:10px;
+padding:15px;
 margin:10px;
+border:none;
+border-radius:10px;
+color:white;
+font-size:16px;
 cursor:pointer;
+width:250px;
 
 }
 
-button:hover{
+.yt{
 
-background:#00ff00;
-color:black;
+background:red;
 
 }
 
-#subs{
+.wa{
 
-font-size:35px;
+background:green;
+
+}
+
+.support{
+
+background:purple;
+
+}
+
+.upi{
+
+background:orange;
+
+}
+
+#subscriber{
+
+color:red;
+font-size:40px;
+
+}
+
+footer{
+
+background:black;
+color:white;
+padding:15px;
+margin-top:20px;
 
 }
 
 </style>
-
 </head>
 
 <body>
 
-<canvas id="matrix"></canvas>
+<header>
+
+<h1>Ankit Yadav Official Website</h1>
+
+<p>Welcome to my website</p>
+
+</header>
 
 <div class="card">
 
-<img src="profile.jpg">
+<img src="profile.jpg" class="profile">
 
-<h2>ANIKT_YADAV.exe</h2>
+<h2>Ankit Yadav</h2>
 
-<p>System Access: GRANTED</p>
+<p>YouTuber & Content Creator</p>
 
-<p>Subscribers:</p>
+<h3>Live Subscribers</h3>
 
-<div id="subs">38500</div>
+<div id="subscriber">38500</div>
 
-<button onclick="window.open('https://youtube.com')">
 
-OPEN YOUTUBE
+<button class="yt"
+onclick="window.open('https://youtube.com/')">
 
-</button>
-
-<button onclick="window.open('https://wa.me/919026697924')">
-
-WHATSAPP
+Open YouTube
 
 </button>
 
-<button onclick="payUPI()">
 
-SUPPORT UPI
+<button class="wa"
+onclick="window.open('https://wa.me/91870778683')">
+
+WhatsApp Chat
+
+</button>
+
+
+<button class="support"
+onclick="alert('UPI ID: 870778683@ptyes')">
+
+Support Me
+
+</button>
+
+
+<button class="upi"
+onclick="document.getElementById('upi').scrollIntoView()">
+
+Pay via UPI
 
 </button>
 
 </div>
 
-<script>
 
-function payUPI(){
+<div class="card" id="upi">
 
-window.location.href="upi://pay?pa=870778683@ptyes";
+<h2>Scan & Pay</h2>
 
-}
+<img src="phonepe_qr_ankit.jpg" width="250">
 
-// MATRIX EFFECT
+<p>UPI ID: 870778683@ptyes</p>
 
-var canvas=document.getElementById("matrix");
+</div>
 
-var ctx=canvas.getContext("2d");
 
-canvas.height=window.innerHeight;
+<footer>
 
-canvas.width=window.innerWidth;
+© 2026 Ankit Yadav Official Website
 
-var letters="HACKERANKITYADAV";
-
-letters=letters.split("");
-
-var fontSize=14;
-
-var columns=canvas.width/fontSize;
-
-var drops=[];
-
-for(var i=0;i<columns;i++)
-drops[i]=1;
-
-function draw(){
-
-ctx.fillStyle="rgba(0,0,0,0.05)";
-ctx.fillRect(0,0,canvas.width,canvas.height);
-
-ctx.fillStyle="#0f0";
-
-ctx.font=fontSize+"px monospace";
-
-for(var i=0;i<drops.length;i++){
-
-var text=letters[Math.floor(Math.random()*letters.length)];
-
-ctx.fillText(text,i*fontSize,drops[i]*fontSize);
-
-if(drops[i]*fontSize>canvas.height && Math.random()>0.975)
-
-drops[i]=0;
-
-drops[i]++;
-
-}
-
-}
-
-setInterval(draw,35);
-
-</script>
+</footer>
 
 </body>
-
 </html>
